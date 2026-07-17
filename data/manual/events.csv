@@ -1,0 +1,8 @@
+date,flag,active,note
+2026-03-15,per_wafer_profit_inversion,1,TrendForce:HBM单晶圆收入1Q26被DDR5 RDIMM反超
+2026-03-31,rated_debt_to_pensions,1,CRWV DDTL4.0获穆迪A3;养老金/保险成为合规买家
+2025-09-01,vendor_financing_expansion,1,NVDA投资承诺/收入比67%(Lucent峰值24%的2.8倍)
+2026-01-01,hbm4_yield_breakthrough,0,未触发;良率超预期时置1
+2026-01-01,order_cancellation_wave,0,未触发;取消/订单比抬头时置1
+2026-01-01,supplier_capex_cut,0,未触发;三大厂削减capex公告时置1
+2026-01-01,contract_renegotiation,0,未触发;算力长约重谈=红灯

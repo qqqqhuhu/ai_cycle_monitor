@@ -1,0 +1,2 @@
+date,capex_cum_vs_target,power_connected,hbm_capacity,industrial_token_share,agent_penetration,rev_per_emp_inflection,note
+2026-07-01,45,35,50,40,20,10,各分项0-100;infra按累计capex/并网GW/HBM产能爬坡估算

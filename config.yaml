@@ -1,0 +1,69 @@
+# AI Cycle Monitor — 四次革命框架周期监测看板
+# 框架锚点：正厅窗口(agent工业负载满载+物理AI量产) = 2032-2037
+# 所有阈值可调；来源标注 [auto]=采集器自动 [manual]=人工季度/月度录入
+
+anchor:
+  hall_window: [2032, 2037]        # 正厅点亮预测窗口
+  halftime_note: "金融出清历史上发生在门厅与正厅之间的空窗期(1847/1929/2000)"
+
+# ---------------- 面板A：铜层周期(时序) ----------------
+copper_panel:
+  indicators:
+    inventory_weeks:               # [manual] 三大存储厂库存周数(财报电话会)
+      start_below: 4.0             # 启动确认:库存击穿4周(2018/2025样本低点3.3周)
+      top_above: 10.0              # 顶部确认:回升破10-12周
+    price_mom_qoq_pct:             # [manual] DRAM/HBM综合价格环比动量
+      rally_above: 10
+      crash_below: -15
+    supplier_capex_sales_pct:      # [auto:yfinance MU等 + manual海力士/三星] 资本开支/销售
+      top_signal_above: 35         # capex/销售见顶区间(历史存储周期顶部特征)
+    hbm_wafer_share_pct:           # [manual:TrendForce口径 18%(25)→22%(26)→30%(27)]
+      top_signal_above: 28         # 供给闸门:晶圆分配逼近27年目标=新矿到位
+    substitution_penetration_pct:  # [manual] 替代技术渗透(CPO占新增端口/近存计算)
+      top_signal_above: 10         # 铝替代铜定律:替代在价格峰值处加速
+  flags:                           # [manual events.csv] 布尔事件
+    - per_wafer_profit_inversion   # HBM单晶圆盈利被DDR5反超(1Q26已触发)
+    - hbm4_yield_breakthrough      # HBM4良率超预期=供给提前释放
+    - order_cancellation_wave      # 订单取消潮=需求气穴
+    - supplier_capex_cut           # 厂商削减资本开支=出清期特征
+  phase_rules:
+    top_signals_needed: 2          # 顶部信号:上述top条件+flags中任意凑满2个
+  gpu_spot_hook:                   # 复用你的 qqqqhuhu/gpu_monitor 输出
+    csv_path: "data/auto/gpu_spot.csv"   # 期待列: date, gpu_model, usd_per_hour
+
+# ---------------- 面板B：融资结构(泡沫形状) ----------------
+credit_panel:
+  tickers_hyperscaler: [MSFT, GOOGL, AMZN, META, ORCL]   # [auto] capex/经营现金流
+  tickers_neocloud: [CRWV, NBIS]                          # [auto] 股价/波动作代理
+  thresholds:
+    capex_ocf_yellow: 1.00        # capex(+回购分红)>现金流→依赖外部融资
+    neocloud_interest_rev_orange: 25   # 利息/收入>25%(CRWV 1Q26=25.8%,指引27.3%)
+    spread_red_bps: 400           # AI基建债利差爆表
+  flags:                           # [manual]
+    - rated_debt_to_pensions      # 评级后分发进养老金(2026-03-31 CRWV DDTL4.0 A3已触发)
+    - contract_renegotiation      # 算力长约重谈=Insull分红断裂对应物
+    - rating_downgrade
+    - vendor_financing_expansion  # 供应商融资/收入比继续扩大(NVDA口径67%)
+
+# ---------------- 面板C：阈值击穿与正厅点亮(传导) ----------------
+threshold_panel:
+  token_price_source: openrouter   # [auto] https://openrouter.ai/api/v1/models 免费
+  frontier_models: ["anthropic/claude", "openai/gpt", "google/gemini"]  # 取各家旗舰均价
+  industry_thresholds:             # 行业经济学翻转价(每百万token混合价,自定可调)
+    - {name: "代码功能点交付",   flip_usd_per_mtok: 8.0,  note: "已击穿:软件业=第一座工厂"}
+    - {name: "客服单次解决",     flip_usd_per_mtok: 3.0,  note: "对照人工$4-8/次"}
+    - {name: "初级法律/合同审阅", flip_usd_per_mtok: 1.5,  note: "含验证冗余3x采样"}
+    - {name: "医疗影像初筛辅助", flip_usd_per_mtok: 0.8,  note: "监管成本另计"}
+    - {name: "机器人实时认知",   flip_usd_per_mtok: 0.3,  note: "端侧折算,物理AI下半场门槛"}
+  industrial_load:                 # 台灯/电机交叉点
+    crossover_pct: 50              # agent/API负载占比>50%=照明时代结束
+  org_metrics:                     # [manual] 组织重构=福特识别器
+    rev_per_employee_ratio_hot: 10 # AI原生篮子/传统SaaS中位数人均产值比
+    middle_mgmt_layoff_share_hot: 50  # 裁员中中层占比(亚马逊样本78%)
+
+# ---------------- 剪刀差(半场哨) ----------------
+scissors:
+  # 基础设施进度 infra 与 应用负载进度 load 各0-100,由signals.py按子指标加权
+  infra_weights: {capex_cum_vs_target: 0.5, power_connected: 0.3, hbm_capacity: 0.2}
+  load_weights:  {industrial_token_share: 0.4, agent_penetration: 0.3, rev_per_emp_inflection: 0.3}
+  gap_alert: 30                    # 剪刀差>30 且 信用面板≥orange → 半场哨预警

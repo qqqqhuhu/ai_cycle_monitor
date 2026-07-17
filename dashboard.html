@@ -1,0 +1,117 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>四次革命周期监测 · 控制室</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#141A24;color:#D8DEE9;font-family:'IBM Plex Mono','SF Mono',Menlo,'PingFang SC','Microsoft YaHei',monospace;
+     font-size:14px;line-height:1.65;padding:28px;max-width:1180px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #F2A623;
+       padding-bottom:14px;margin-bottom:22px;flex-wrap:wrap;gap:8px}
+h1{font-size:19px;font-weight:600;letter-spacing:.12em} h1 span{color:#F2A623}
+.sub{color:#7C8798;font-size:12px}
+.panel{background:#1B2330;border:1px solid #2A3547;border-radius:10px;padding:18px 20px;margin-bottom:18px}
+.plabel{font-size:11px;letter-spacing:.22em;color:#7C8798;text-transform:uppercase;margin-bottom:12px;
+        display:flex;justify-content:space-between}
+.lamps{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 14px}
+.lamp{padding:5px 13px;border-radius:20px;border:1px solid #2A3547;color:#7C8798;font-size:12.5px}
+.lamp.on{background:#F2A623;color:#1A1206;border-color:#F2A623;font-weight:600;
+         box-shadow:0 0 14px rgba(242,166,35,.45)}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{border:1px solid #2A3547;border-radius:8px;padding:8px 12px;min-width:118px}
+.chip .k{font-size:11px;color:#7C8798} .chip .v{font-size:17px;font-weight:600}
+.gauge{margin:8px 0 4px}
+.track{position:relative;height:14px;background:#0E1420;border:1px solid #2A3547;border-radius:7px;margin:7px 0 3px}
+.fill{position:absolute;top:0;left:0;bottom:0;border-radius:7px}
+.tlabel{display:flex;justify-content:space-between;font-size:11.5px;color:#7C8798}
+.banner{border-radius:8px;padding:10px 14px;font-weight:600;letter-spacing:.06em;margin-bottom:12px;color:#141A24}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:#7C8798;font-weight:400;font-size:11.5px;letter-spacing:.08em;
+   border-bottom:1px solid #2A3547;padding:6px 8px}
+td{padding:7px 8px;border-bottom:1px solid #2A3547;vertical-align:top}
+.ok{color:#3FBF9F} .warn{color:#F2A623} .bad{color:#E8593C}
+ul{list-style:none} li{padding:3px 0} li::before{content:"▸ ";color:#F2A623}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+footer{color:#7C8798;font-size:11.5px;border-top:1px solid #2A3547;padding-top:12px;margin-top:6px}
+.mk{position:absolute;top:-4px;bottom:-4px;width:2px;background:#E8593C}
+details{margin-top:12px;border-top:1px dashed #2A3547;padding-top:8px}
+summary{cursor:pointer;color:#5B8DD9;font-size:12px;letter-spacing:.06em}
+details p, details li{font-size:12.5px;color:#7C8798;margin:6px 0}
+details b{color:#D8DEE9;font-weight:600}
+.chart{background:#0E1420;border:1px solid #2A3547;border-radius:8px;padding:10px 12px 6px}
+.chart .t{font-size:11.5px;color:#7C8798;letter-spacing:.06em;margin-bottom:2px}
+.bands{position:relative;height:26px;display:flex;border-radius:6px;overflow:visible;margin:22px 0 6px}
+.bands div{height:14px;margin-top:6px}
+.bmk{position:absolute;top:-8px;transform:translateX(-50%);color:#D8DEE9;font-size:11px;text-align:center}
+.bmk::after{content:"▼";display:block;color:#E8593C;font-size:10px;line-height:.6}
+.blab{display:flex;font-size:10.5px;color:#7C8798}
+</style></head><body>
+<header><h1>四次革命周期监测 <span>CONTROL ROOM</span></h1>
+<div class="sub">正厅窗口锚点 2032–2037 ｜ 生成 2026-07-17 ｜ 历史数据点 13 个
+(最近 2026-07-17)</div></header>
+
+<div class="panel"><div class="plabel"><span>历史趋势(每日记录)</span>
+<span>今天没新点=任务没跑,这就是"更新没"的答案</span></div><div class="grid4">
+<div class="chart"><div class="t">Token价格 $/Mtok</div><svg viewBox="0 0 300 96" width="100%"><line x1="34" y1="16.774193548387096" x2="292" y2="16.774193548387096" stroke="#2A3547" stroke-width="0.5"/><text x="30" y="19.774193548387096" text-anchor="end" font-size="9" fill="#7C8798">6.2</text><line x1="34" y1="73.22580645161291" x2="292" y2="73.22580645161291" stroke="#2A3547" stroke-width="0.5"/><text x="30" y="76.22580645161291" text-anchor="end" font-size="9" fill="#7C8798">0.5</text><polyline points="34.0,16.8 55.3,18.8 76.7,20.7 98.0,22.7 119.3,24.7 140.7,26.7 162.0,28.7 183.3,29.6 204.7,30.6 226.0,31.6 247.3,32.6 268.7,33.6 290.0,33.6" fill="none" stroke="#F2A623" stroke-width="1.8"/><circle cx="290.0" cy="33.6" r="2.6" fill="#F2A623"/><polyline points="34.0,68.8 55.3,69.3 76.7,69.8 98.0,70.3 119.3,70.8 140.7,71.2 162.0,71.6 183.3,72.0 204.7,72.4 226.0,72.7 247.3,73.0 268.7,73.2 290.0,73.2" fill="none" stroke="#3FBF9F" stroke-width="1.8"/><circle cx="290.0" cy="73.2" r="2.6" fill="#3FBF9F"/><text x="34" y="93" font-size="9.5" fill="#7C8798">2026-01-15</text><text x="292" y="93" text-anchor="end" font-size="9.5" fill="#7C8798">2026-07-17</text><text x="34" y="10" font-size="10"><tspan fill="#F2A623">● 旗舰 4.5</tspan>  <tspan fill="#3FBF9F">● 底价 0.5</tspan>  </text></svg></div>
+<div class="chart"><div class="t">GPU现货 $/h (gpu_monitor)</div><svg viewBox="0 0 300 96" width="100%"><line x1="34" y1="16.774193548387103" x2="292" y2="16.774193548387103" stroke="#2A3547" stroke-width="0.5"/><text x="30" y="19.774193548387103" text-anchor="end" font-size="9" fill="#7C8798">2.35</text><line x1="34" y1="73.2258064516129" x2="292" y2="73.2258064516129" stroke="#2A3547" stroke-width="0.5"/><text x="30" y="76.2258064516129" text-anchor="end" font-size="9" fill="#7C8798">1.72</text><polyline points="34.0,16.8 55.3,23.0 76.7,30.2 98.0,37.4 119.3,43.7 140.7,48.1 162.0,51.7 183.3,57.1 204.7,60.7 226.0,61.6 247.3,67.8 268.7,73.2 290.0,73.2" fill="none" stroke="#5B8DD9" stroke-width="1.8"/><circle cx="290.0" cy="73.2" r="2.6" fill="#5B8DD9"/><text x="34" y="93" font-size="9.5" fill="#7C8798">2026-01-15</text><text x="292" y="93" text-anchor="end" font-size="9.5" fill="#7C8798">2026-07-17</text><text x="34" y="10" font-size="10"><tspan fill="#5B8DD9">● H100 1.72</tspan>  </text></svg></div>
+<div class="chart"><div class="t">剪刀差(空窗宽度)</div><svg viewBox="0 0 300 96" width="100%"><line x1="34" y1="16.77419354838709" x2="292" y2="16.77419354838709" stroke="#2A3547" stroke-width="0.5"/><text x="30" y="19.77419354838709" text-anchor="end" font-size="9" fill="#7C8798">24</text><line x1="34" y1="73.22580645161291" x2="292" y2="73.22580645161291" stroke="#2A3547" stroke-width="0.5"/><text x="30" y="76.22580645161291" text-anchor="end" font-size="9" fill="#7C8798">18</text><polyline points="34.0,16.8 55.3,16.8 76.7,26.2 98.0,26.2 119.3,35.6 140.7,35.6 162.0,45.0 183.3,54.4 204.7,54.4 226.0,63.8 247.3,63.8 268.7,73.2 290.0,73.2" fill="none" stroke="#E8593C" stroke-width="1.8"/><circle cx="290.0" cy="73.2" r="2.6" fill="#E8593C"/><text x="34" y="93" font-size="9.5" fill="#7C8798">2026-01-15</text><text x="292" y="93" text-anchor="end" font-size="9.5" fill="#7C8798">2026-07-17</text><text x="34" y="10" font-size="10"><tspan fill="#E8593C">● gap 18</tspan>  </text></svg></div>
+<div class="chart"><div class="t">工业负载占比 %</div><svg viewBox="0 0 300 96" width="100%"><line x1="34" y1="16.774193548387117" x2="292" y2="16.774193548387117" stroke="#2A3547" stroke-width="0.5"/><text x="30" y="19.774193548387117" text-anchor="end" font-size="9" fill="#7C8798">40</text><line x1="34" y1="73.22580645161291" x2="292" y2="73.22580645161291" stroke="#2A3547" stroke-width="0.5"/><text x="30" y="76.22580645161291" text-anchor="end" font-size="9" fill="#7C8798">30</text><polyline points="34.0,73.2 55.3,67.6 76.7,61.9 98.0,56.3 119.3,50.6 140.7,45.0 162.0,39.4 183.3,33.7 204.7,28.1 226.0,28.1 247.3,22.4 268.7,16.8 290.0,16.8" fill="none" stroke="#3FBF9F" stroke-width="1.8"/><circle cx="290.0" cy="16.8" r="2.6" fill="#3FBF9F"/><text x="34" y="93" font-size="9.5" fill="#7C8798">2026-01-15</text><text x="292" y="93" text-anchor="end" font-size="9.5" fill="#7C8798">2026-07-17</text><text x="34" y="10" font-size="10"><tspan fill="#3FBF9F">● load 40</tspan>  </text></svg></div>
+</div></div>
+
+<div class="panel"><div class="plabel"><span>剪刀差 · 空窗期宽度(半场哨)</span><span>gap≥30 且 信用≥橙 → 预警</span></div>
+<div class="gauge"><div class="tlabel"><span>基础设施进度(capex/电力/HBM产能)</span><span>43</span></div><div class="track"><div class="fill" style="width:43.0%;background:#F2A623"></div></div><div class="tlabel"><span></span><span>100=正厅基建完工</span></div></div>
+<div class="gauge"><div class="tlabel"><span>工业负载进度(agent渗透/人均产值拐点)</span><span>25</span></div><div class="track"><div class="fill" style="width:25.0%;background:#3FBF9F"></div></div><div class="tlabel"><span></span><span>100=正厅满载</span></div></div>
+<div class="chips" style="margin-top:10px"><div class="chip"><div class="k">剪刀差</div><div class="v">18.0</div></div><span class="lamp">半场哨:未触发</span></div>
+<details><summary>怎么读这个面板</summary>
+<p><b>逻辑</b>:资本按基建进度定价,收入按负载进度到账,两者之差=空窗期宽度。1847/1929/2000的金融出清全部发生在空窗内。</p>
+<p><b>gap走阔</b>=基建跑得比应用快→出清风险上升;<b>gap收窄</b>=应用追上来→泡沫获得收入证据。方向比水平重要,盯上面的趋势图。</p></details></div>
+
+<div class="panel"><div class="plabel"><span>面板A · 铜层周期(HBM/光模块/封装/电力设备)</span><span>顶部信号 1/2</span></div>
+<div class="lamps"><span class="lamp">① 启动</span><span class="lamp on">② 主升</span><span class="lamp">③ 顶部信号</span><span class="lamp">④ 崩塌</span><span class="lamp">⑤ 出清</span></div>
+<div class="chips"><div class="chip"><div class="k">库存周数</div><div class="v">3.5</div></div><div class="chip"><div class="k">价格环比%</div><div class="v">18.0</div></div><div class="chip"><div class="k">capex/销售%</div><div class="v">30.0</div></div><div class="chip"><div class="k">HBM晶圆份额%</div><div class="v">22.0</div></div><div class="chip"><div class="k">替代渗透%</div><div class="v">6.0</div></div><div class="chip"><div class="k">GPU现货 H100 SXM</div><div class="v">$1.72/h <span class="sub">(-7.0%)</span></div></div></div>
+<div style="margin-top:10px"><span class="sub">顶部信号计票:</span><ul><li>单晶圆盈利倒挂(HBM<DDR5)</li></ul></div>
+<details><summary>怎么读这个面板(各指标定义与来源)</summary>
+<p><b>库存周数</b>(财报电话会/TrendForce):原厂+渠道库存÷周销量。&lt;4周=紧缺确认(2018/2025低点均3.3周),回升破10周=过剩确认。</p>
+<p><b>capex/销售%</b>(三大厂财报):供给响应强度。≥35%进入历史存储周期的顶部区——高利润驱动的扩产总在1-2年后变成过剩。</p>
+<p><b>HBM晶圆份额%</b>(TrendForce):产能分配闸门,路径18%(25)→22%(26)→30%(27)。逼近28%="新矿群到位",供给洪峰在途。</p>
+<p><b>替代渗透%</b>:CPO占新增光互连端口比。≥10%=铝替代铜时刻——历史上替代总在价格峰值处加速,毛利率最好看时最危险。</p>
+<p><b>单晶圆盈利倒挂</b>(事件flag,TrendForce 1Q26):同一片晶圆做HBM的收益低于做DDR5——"主矿不如副产品赚钱",
+厂商产能回切动机出现,供给结构松动的早期信号。<b>它不预示立刻见顶,但计入顶部信号票。</b></p></details></div>
+
+<div class="grid2">
+<div class="panel"><div class="plabel"><span>面板B · 融资结构(泡沫形状)</span></div>
+<div class="banner" style="background:#E88A3C">信用状态: ORANGE</div>
+<ul><li>capex/OCF最高 1.60 → 依赖外部融资</li><li>供应商融资敞口继续扩大</li><li>Neocloud利息/收入 27.3% (Insull杠杆区)</li><li>评级后AI债分发进养老金/保险 (风险外溢机制)</li></ul>
+<div class="sub" style="margin-top:12px">Neocloud利息/收入 与 安全区间:</div><div class="bands"><div style="width:20.0%;background:#3FBF9F;opacity:.75"></div><div style="width:30.0%;background:#F2A623;opacity:.75"></div><div style="width:30.0%;background:#E88A3C;opacity:.75"></div><div style="width:20.0%;background:#E8593C;opacity:.75"></div><div class="bmk" style="left:54.6%">27.3%</div></div><div class="blab"><span style="width:20.0%">公用事业常态<br>0–10%</span><span style="width:30.0%">关注<br>10–25%</span><span style="width:30.0%">Insull区<br>25–40%</span><span style="width:20.0%">危险(环球电讯路径)<br>40–50%</span></div>
+<table style="margin-top:12px"><tr><th>超大规模厂商</th><th>capex/OCF</th></tr><tr><td>MSFT</td><td class="bad">1.05</td></tr><tr><td>GOOGL</td><td class="ok">0.95</td></tr><tr><td>AMZN</td><td class="bad">1.1</td></tr><tr><td>META</td><td class="bad">1.15</td></tr><tr><td>ORCL</td><td class="bad">1.6</td></tr></table>
+<details><summary>怎么读这个面板</summary>
+<p><b>利息/收入色带</b>:&lt;10%是公用事业/数据中心REIT的正常杠杆水位;25-40%=Insull区(1932控股金字塔崩塌前的负担水平);
+≥40%对应环球电讯1999-2001破产前路径。当前值取CRWV口径。</p>
+<p><b>capex/OCF&gt;1</b>=经营现金流不够花,必须发债/发股维持扩张——泡沫从"现金流游戏"变"融资游戏"的分界线。</p>
+<p><b>红灯项</b>(长约重谈/降级/利差≥400bps)=Insull分红断裂对应物,触发即强制半场哨。</p></details></div>
+
+<div class="panel"><div class="plabel"><span>面板C-1 · 台灯→电机交叉点</span></div>
+<div class="gauge"><div class="tlabel"><span>工业负载占token消耗比(agent/API vs 聊天)</span><span>40</span></div><div class="track"><div class="fill" style="width:40.0%;background:#3FBF9F"></div><div class="mk" style="left:50%"></div></div><div class="tlabel"><span></span><span>交叉点=照明时代结束</span></div></div>
+<div class="chips" style="margin-top:8px">
+<div class="chip"><div class="k">旗舰均价</div><div class="v">$4.5/Mtok</div></div>
+<div class="chip"><div class="k">最低可用价(P5)</div><div class="v">$0.5/Mtok</div></div>
+<div class="chip"><div class="k">人均产值比</div><div class="v">20.0×</div></div>
+<div class="chip"><div class="k">裁员中层占比</div><div class="v">78.0%</div></div></div>
+<details><summary>怎么读:过线是好是坏?</summary>
+<p><b>这不是涨跌信号,是需求性质的证据线。</b>越过50%意味着:①capex拿到收入证据,需求从可选订阅变生产刚需→剪刀差收窄→
+出清风险<b>下降</b>;②token加速商品化,单价继续跌但量补价(电力公司剧本,利好卖铲人、压缩模型层毛利)。</p>
+<p><b>坏的情形是迟迟不过线</b>而基建继续堆——空窗拉宽,1929剧本概率上升。所以关注的是这条线的<b>斜率</b>,不是它本身的涨跌含义。</p>
+<p><b>人均产值比/中层占比</b>=福特识别器:前者是AI原生篮子÷传统SaaS中位数(现20×),后者衡量组织拓扑是否真在变更(亚马逊样本78%)。</p></details></div>
+</div>
+
+<div class="panel"><div class="plabel"><span>面板C-2 · 行业阈值击穿进度(二阶产业着火表)</span></div>
+<table><tr><th>行业翻转点</th><th>阈值价</th><th>状态</th><th>含义</th></tr><tr><td>代码功能点交付</td><td>$8.0/Mtok</td><td class="ok">底价已击穿<br><span class="sub">最低可用价$0.5 ≤ 阈值</span></td><td class="sub">成本已不是瓶颈→看产品/监管。已击穿:软件业=第一座工厂</td></tr><tr><td>客服单次解决</td><td>$3.0/Mtok</td><td class="ok">底价已击穿<br><span class="sub">最低可用价$0.5 ≤ 阈值</span></td><td class="sub">成本已不是瓶颈→看产品/监管。对照人工$4-8/次</td></tr><tr><td>初级法律/合同审阅</td><td>$1.5/Mtok</td><td class="ok">底价已击穿<br><span class="sub">最低可用价$0.5 ≤ 阈值</span></td><td class="sub">成本已不是瓶颈→看产品/监管。含验证冗余3x采样</td></tr><tr><td>医疗影像初筛辅助</td><td>$0.8/Mtok</td><td class="ok">底价已击穿<br><span class="sub">最低可用价$0.5 ≤ 阈值</span></td><td class="sub">成本已不是瓶颈→看产品/监管。监管成本另计</td></tr><tr><td>机器人实时认知</td><td>$0.3/Mtok</td><td class="ok">未击穿<br><span class="sub">价格仍高于阈值</span></td><td class="sub">成本已不是瓶颈→看产品/监管。端侧折算,物理AI下半场门槛</td></tr></table>
+<div class="sub" style="margin-top:8px">旗舰均价=前沿模型混合价(输入:输出按1:3);最低可用价=OpenRouter第5百分位模型价,
+代表"最便宜但能用"。<b style="color:#D8DEE9">击穿≠产业已爆发</b>,只表示token成本不再是瓶颈,剩下的是产品/监管/信任——
+参照Netflix等到2007年而非2000年。</div></div>
+
+<div class="panel"><div class="plabel"><span>事件日志(状态机布尔输入)</span></div>
+<table><tr><th>日期</th><th>事件</th><th>备注/来源</th></tr><tr><td>2026-03-15</td><td>per_wafer_profit_inversion</td><td class="sub">TrendForce:HBM单晶圆收入1Q26被DDR5 RDIMM反超</td></tr><tr><td>2026-03-31</td><td>rated_debt_to_pensions</td><td class="sub">CRWV DDTL4.0获穆迪A3;养老金/保险成为合规买家</td></tr><tr><td>2025-09-01</td><td>vendor_financing_expansion</td><td class="sub">NVDA投资承诺/收入比67%(Lucent峰值24%的2.8倍)</td></tr></table></div>
+
+<footer>面板A=时序 B=泡沫形状 C=传导/正厅点亮 ｜ 自动源每日记录进 data/history/daily.csv,人工源季度更新。
+历史类比框架,非投资建议。</footer></body></html>
