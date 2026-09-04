@@ -1,7 +1,7 @@
 {
- "asof": "2026-09-03",
+ "asof": "2026-09-04",
  "data": {
   "frontier_usd_mtok": 13.243,
-  "floor_usd_mtok": 0.1225
+  "floor_usd_mtok": 0.125
  }
 }
